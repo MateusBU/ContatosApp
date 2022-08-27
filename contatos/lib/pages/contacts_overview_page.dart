@@ -1,8 +1,13 @@
 import 'package:contatos/components/contact_item_widget.dart';
+import 'package:contatos/data/dummy_data.dart';
 import 'package:flutter/material.dart';
 
+import '../models/contact.dart';
+
 class ContactsOverviewPage extends StatelessWidget {
-  const ContactsOverviewPage({super.key});
+  ContactsOverviewPage({super.key});
+
+  final List<Contact> contacts = dummyContact;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +26,9 @@ class ContactsOverviewPage extends StatelessWidget {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: 5,
+              itemCount: contacts.length,
               itemBuilder: (
-                (ctx, index) => const ContactItemWidget()
+                (ctx, index) => ContactItemWidget(contacts[index])
               ),
             ),
           ),

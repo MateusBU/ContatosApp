@@ -1,3 +1,4 @@
+import 'package:contatos/pages/contact_detail_page.dart';
 import 'package:contatos/pages/contacts_overview_page.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        AppRoutes.HOME: (context) => const ContactsOverviewPage(),
+        AppRoutes.HOME: (context) => ContactsOverviewPage(),
+        AppRoutes.CONTACT_DETAIL: (context) => const ContactDetailPage(),
       },
     );
   }
