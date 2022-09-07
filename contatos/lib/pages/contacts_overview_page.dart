@@ -1,19 +1,33 @@
 import 'package:contatos/components/contact_item_widget.dart';
 import 'package:contatos/data/dummy_data.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../models/contact.dart';
+import '../models/contact_list.dart';
+import '../routes/routes_app.dart';
 
 class ContactsOverviewPage extends StatelessWidget {
-  ContactsOverviewPage({super.key});
+  const ContactsOverviewPage({super.key});
 
-  final List<Contact> contacts = dummyContact;
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<ContactList>(context);
+    final List<Contact> contacts = provider.items;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Contacts'),
+        actions: [
+          IconButton(
+            onPressed: (){
+              Navigator.of(context).pushNamed(
+                AppRoutes.CONTACT_FORM,
+              );
+            },
+            icon: const Icon(Icons.add_circle_outline),
+          ),
+        ],
       ),
       body: Column(
         children: [

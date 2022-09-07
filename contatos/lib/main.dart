@@ -1,7 +1,10 @@
 import 'package:contatos/pages/contact_detail_page.dart';
+import 'package:contatos/pages/contact_form_page.dart';
 import 'package:contatos/pages/contacts_overview_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import 'models/contact_list.dart';
 import 'routes/routes_app.dart';
 
 void main() {
@@ -14,15 +17,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return ChangeNotifierProvider(
+      create: (_) => ContactList(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: (Colors.indigo),
+          fontFamily: 'Lato',
+        ),
+        routes: {
+          AppRoutes.HOME: (context) => ContactsOverviewPage(),
+          AppRoutes.CONTACT_DETAIL: (context) => const ContactDetailPage(),
+          AppRoutes.CONTACT_FORM: (context) => const ContactFormPage(),
+        },
       ),
-      routes: {
-        AppRoutes.HOME: (context) => ContactsOverviewPage(),
-        AppRoutes.CONTACT_DETAIL: (context) => const ContactDetailPage(),
-      },
     );
   }
 }

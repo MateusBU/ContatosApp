@@ -1,4 +1,6 @@
 
+import 'package:flutter/widgets.dart';
+
 class ContactGroup{
  static const String FAMILY = 'Family';
  static const String FRIEND = 'Friend';
@@ -6,7 +8,7 @@ class ContactGroup{
  static const String MY_CONTACT = 'Friend';
 }
 
-class Contact {
+class Contact with ChangeNotifier{
   final String id;
   final String name;
   final String? address;
@@ -26,6 +28,11 @@ class Contact {
     this.groups,
     this.isFavorite = false,
   });
+
+  void toggleFavorite(){
+    isFavorite = !isFavorite;
+    notifyListeners();
+  }
 
 
 }
