@@ -1,5 +1,4 @@
 import 'package:contatos/components/contact_item_widget.dart';
-import 'package:contatos/data/dummy_data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -42,7 +41,10 @@ class ContactsOverviewPage extends StatelessWidget {
             child: ListView.builder(
               itemCount: contacts.length,
               itemBuilder: (
-                (ctx, index) => ContactItemWidget(contacts[index])
+                (ctx, index) => ChangeNotifierProvider.value(
+                  value: contacts[index],
+                  child: ContactItemWidget(),
+                )
               ),
             ),
           ),

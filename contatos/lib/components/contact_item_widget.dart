@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../models/contact.dart';
 import '../routes/routes_app.dart';
 
 class ContactItemWidget extends StatefulWidget {
-
-  const ContactItemWidget(this.contact);
-
-  final Contact contact;
 
   @override
   State<ContactItemWidget> createState() => _ContactItemWidgetState();
@@ -18,6 +15,7 @@ class _ContactItemWidgetState extends State<ContactItemWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final contact = Provider.of<Contact>(context,listen:false);
     return  Card(
       margin: const EdgeInsets.symmetric(
         vertical: 5,
@@ -30,8 +28,8 @@ class _ContactItemWidgetState extends State<ContactItemWidget> {
               backgroundColor: Colors.black,
               child: Text('M', style: TextStyle(fontSize: 25 ),),
             ),
-            title: Text(widget.contact.name),
-            subtitle: Text(widget.contact.number[0]),
+            title: Text(contact.name),
+            subtitle: Text(contact.number[0]),
             trailing: IconButton(
               onPressed: () {
                 setState(() {
@@ -56,7 +54,7 @@ class _ContactItemWidgetState extends State<ContactItemWidget> {
                         onPressed: () {
                           Navigator.of(context).pushNamed(
                             AppRoutes.CONTACT_DETAIL,
-                            arguments: widget.contact,
+                            arguments: contact,
                           );
                         },
                         iconSize: 35,

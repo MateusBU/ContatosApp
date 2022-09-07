@@ -1,20 +1,24 @@
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../models/contact.dart';
 
 
 
-class ContactDetailPage extends StatelessWidget {
+class ContactDetailPage extends StatefulWidget{
   
   
   const ContactDetailPage();
 
   @override
+  State<ContactDetailPage> createState() => _ContactDetailPageState();
+}
+
+class _ContactDetailPageState extends State<ContactDetailPage> {
+  @override
   Widget build(BuildContext context) {
     final Contact contact = ModalRoute.of(context)!.settings.arguments as Contact;
-    final c = Provider.of<Contact>(context,listen:false);
+    //final c = Provider.of<Contact>(context,listen:false);
     return Scaffold(
       appBar: AppBar(
         title: Text(contact.name),
@@ -62,7 +66,8 @@ class ContactDetailPage extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     child:  IconButton(
                       onPressed: (){
-                        c.toggleFavorite();
+                        contact.toggleFavorite();
+                        setState(() {});
                       },
                       icon: Icon(Icons.star,  color: contact.isFavorite ? Colors.amber : Colors.grey),
                       ),

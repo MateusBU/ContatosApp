@@ -26,9 +26,9 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Lato',
         ),
         routes: {
-          AppRoutes.HOME: (context) => ContactsOverviewPage(),
-          AppRoutes.CONTACT_DETAIL: (context) => const ContactDetailPage(),
-          AppRoutes.CONTACT_FORM: (context) => const ContactFormPage(),
+          AppRoutes.HOME: (context) => const ContactsOverviewPage(),
+          AppRoutes.CONTACT_DETAIL: (context) =>  const ContactDetailPage(),
+          AppRoutes.CONTACT_FORM: (context) => ContactFormPage(),
         },
       ),
     );
